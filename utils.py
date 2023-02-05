@@ -20,3 +20,19 @@ def get_auth():
         auth=auth,
         wait_on_rate_limit=True)
 
+
+def get_timeline(api):
+    return api.home_timeline()
+
+
+def tweet(api, message):
+    api.update_status(message)
+
+
+def get_user(api, user):
+    api.get_user(user)
+
+
+def delete_all_tweets(api):
+    for tweet in tweepy.Cursor(api.user_timeline).items():
+        api.destroy_status(tweet.id)
