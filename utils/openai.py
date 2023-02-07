@@ -9,7 +9,7 @@ openai.api_key = secrets_manager.get_secrets()['openai_secret_key']
 def gpt_completion(
     model_engine,
     prompt,
-    max_tokens=45,
+    max_tokens=100,
     temperature=1.0,
     frequency_penalty=0.5,
     presence_penalty=0.5,
@@ -27,4 +27,4 @@ def gpt_completion(
         n=n,
         stop=stop,
     )
-    return completions.choices[0].text
+    return completions.choices
