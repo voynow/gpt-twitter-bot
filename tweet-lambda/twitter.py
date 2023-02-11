@@ -16,9 +16,7 @@ def get_auth():
         secrets['access_token'], 
         secrets['access_token_secret'])
 
-    return tweepy.API(
-        auth=auth,
-        wait_on_rate_limit=True)
+    return tweepy.API(auth)
 
 
 def tweet(message):

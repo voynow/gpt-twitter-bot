@@ -18,7 +18,7 @@ def lambda_handler(event, context):
     if 'msg' in resp:
         return resp
     else:
-        return twitter.tweet(resp['tweet'])
+        return twitter.tweet(resp['tweet'])._json
 
 
 
