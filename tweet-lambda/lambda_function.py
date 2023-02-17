@@ -6,7 +6,7 @@ import utils
 def lambda_handler(event, context):
 
     model_engine = "text-davinci-003"
-    prompt = "Create an interesting tweet. Use as many hashtags as possible."
+    prompt = "Create an interesting tweet about technology. Don't use the word technology. Use as many hashtags as possible."
 
     body = gpt.gpt_completion(
         model_engine, 
