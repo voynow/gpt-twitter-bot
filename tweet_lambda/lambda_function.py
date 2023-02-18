@@ -9,7 +9,8 @@ def lambda_handler(event, context):
 
     tweet_resp = gpt.gen_tweet(model_engine, prompt)
 
-    if 'msg' in tweet_resp:
+    # don't tweet if invalid or test
+    if 'msg' in tweet_resp or event['test']:
         return tweet_resp
     else:
         return twitter.tweet(tweet_resp['tweet'])._json
