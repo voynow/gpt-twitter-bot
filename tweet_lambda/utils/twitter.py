@@ -22,27 +22,28 @@ def get_auth():
 def tweet(message):
     """ 
     """
-    api = get_auth()
-    return api.update_status(message)
+    return TWEEPY_API.update_status(message)
 
 
-def get_timeline():
+def get_user_timeline(cursorify=False):
     """
     """
-    api = get_auth()
-    return api.home_timeline()
+    if cursorify:
+        return tweepy.Cursor(TWEEPY_API.user_timeline).items()
+    return TWEEPY_API.user_timeline()
 
 
 def get_user(user):
     """
     """
-    api = get_auth()
-    return api.get_user(user)
+    return TWEEPY_API.get_user(user)
 
 
-def delete_all_tweets():
+def delete(tweet_id):
     """
     """
-    api = get_auth()
-    for tweet in tweepy.Cursor(api.user_timeline).items():
-        api.destroy_status(tweet.id)
+    TWEEPY_API.destroy_status(tweet_id)
+
+
+# initialization for API obj
+TWEEPY_API = get_auth()
