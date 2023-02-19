@@ -63,7 +63,7 @@ def clean_gtp_response(body):
         return {"tweet": tweet}
 
 
-def gen_tweet(model_engine, prompt):
+def gen_tweet(model_engine: str, prompt: str):
     """ Generate tweet given engine and prompt
     """
     body = gpt_completion(
