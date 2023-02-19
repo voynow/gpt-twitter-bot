@@ -26,14 +26,23 @@ def tweet(message):
     return api.update_status(message)
 
 
-def get_timeline(api):
+def get_timeline():
+    """
+    """
+    api = get_auth()
     return api.home_timeline()
 
 
-def get_user(api, user):
+def get_user(user):
+    """
+    """
+    api = get_auth()
     return api.get_user(user)
 
 
-def delete_all_tweets(api):
+def delete_all_tweets():
+    """
+    """
+    api = get_auth()
     for tweet in tweepy.Cursor(api.user_timeline).items():
         api.destroy_status(tweet.id)
